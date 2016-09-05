@@ -24,11 +24,7 @@ void loop()
     for(int i=0;i<n;i++){
       char abc[32];
       snprintf(&abc[0],sizeof(abc),"%s Plant %i%% ",plants[i],xbeeGet()); 
-//      Serial.print(plants[i]);
-//      Serial.print(" ");
-//      Serial.print(xbeeGet());
-//      Serial.print("% ");
-        Serial.print(abc);
+      Serial.print(abc);
     }
     Serial.println();
   }
