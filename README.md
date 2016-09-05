@@ -1,10 +1,15 @@
 # Plant-Monitoring-System
 This repository consists of local code and remote code for an Arduino Uno device for building a Plant Monitoring System. It helps in monitoring the moisture levels in the soil of the plant and watering it accordingly.
 The Setup requires:
+
 1. Arduino Uno Boards (To communicate with each other)
+
 2. Grove Base Shields (To connect Grove Moisture Sensors)
+
 3. XBee (For wireless communications)
+
 4. Grove Moisture Sensors (As many sensors as your plants)
+
 5. USB connectors (To connect your Arduino to a PC or a Raspberry Pi)
  
 The Setup looks like this:
