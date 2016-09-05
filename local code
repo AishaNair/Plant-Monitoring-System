@@ -1,0 +1,36 @@
+
+#include <SoftwareSerial.h>
+// XBee's DOUT (TX) is connected to pin 2 (Arduino's Software RX)
+// XBee's DIN (RX) is connected to pin 3 (Arduino's Software TX)
+SoftwareSerial XBee(2, 3); // RX, TX
+
+void setup()
+{
+  // Set up both ports at 9600 baud. This value is most important
+  // for the XBee. Make sure the baud rate matches the config
+  // setting of your XBee.
+  XBee.begin(9600);
+  Serial.begin(9600);
+}
+int xbeeGet(){
+  while (!XBee.available());
+    return XBee.read();
+}
+char* plants[4] = {"Middle","Right","Left","New"};
+void loop()
+{
+  if(xbeeGet()==255){
+    int n=xbeeGet();
+    for(int i=0;i<n;i++){
+      char abc[32];
+      snprintf(&abc[0],sizeof(abc),"%s Plant %i%% ",plants[i],xbeeGet()); 
+//      Serial.print(plants[i]);
+//      Serial.print(" ");
+//      Serial.print(xbeeGet());
+//      Serial.print("% ");
+        Serial.print(abc);
+    }
+    Serial.println();
+  }
+}
+

@@ -1,0 +1,25 @@
+#include <SoftwareSerial.h>
+ SoftwareSerial XBee(2, 3); // RX, TX
+void setup() {
+   XBee.begin(9600);
+   Serial.begin(9600);  
+}
+ 
+void loop() {
+
+  int middle=analogRead(A0);
+  int right=analogRead(A1);
+  int left=analogRead(A2);
+  int newplant=analogRead(A3);
+  int mper=map(middle,0,1023,0,100);
+  int rper=map(right,0,1023,0,100);          
+  int lper=map(left,0,1023,0,100);
+  int nper=map(newplant,0,1023,0,100);
+  XBee.write(255);
+  XBee.write(4); 
+  XBee.write(mper);
+  XBee.write(rper);
+  XBee.write(lper);
+  XBee.write(nper);
+  delay(1000);                 
+}
